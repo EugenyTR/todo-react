@@ -1,10 +1,13 @@
 import React from 'react';
-import { ListItem } from './components/ListItem';
-import { TaskField } from './components/TaskField';
+import {
+  ListItem
+} from './components/ListItem';
+import {
+  TaskField
+} from './components/TaskField';
 
 function App() {
-  const [tasks, setTasks] = React.useState([
-    {
+  const [tasks, setTasks] = React.useState([{
       text: 'Изучить ReactJS',
       completed: true,
     },
@@ -16,17 +19,21 @@ function App() {
       text: 'Деплой react application',
       completed: true,
     },
+    {
+      text: 'Проверка автоматической сборки',
+      completed: false,
+    },
   ]);
 
   const onToggleCompleted = (index) => {
     setTasks((prevTasks) =>
       prevTasks.map((task, curIdx) =>
-        index === curIdx
-          ? {
-              ...task,
-              completed: !task.completed,
-            }
-          : task,
+        index === curIdx ?
+        {
+          ...task,
+          completed: !task.completed,
+        } :
+        task,
       ),
     );
   };
@@ -45,25 +52,42 @@ function App() {
     ]);
   };
 
-  return (
-    <div className="todo">
-      <div className="todo__header">
-        <h4>Список задач</h4>
-      </div>
-      <TaskField onAddTask={onAddTask} />
-      <div className="todo__list">
-        {tasks.map((task, index) => (
-          <ListItem
-            key={index}
-            index={index}
-            text={task.text}
-            completed={task.completed}
-            onToggleCompleted={onToggleCompleted}
-            onRemoveTask={onRemoveTask}
-          />
-        ))}
-      </div>
-    </div>
+  return ( <
+    div className = "todo" >
+    <
+    div className = "todo__header" >
+    <
+    h4 > Список задач < /h4> <
+    /div> <
+    TaskField onAddTask = {
+      onAddTask
+    }
+    /> <
+    div className = "todo__list" > {
+      tasks.map((task, index) => ( <
+        ListItem key = {
+          index
+        }
+        index = {
+          index
+        }
+        text = {
+          task.text
+        }
+        completed = {
+          task.completed
+        }
+        onToggleCompleted = {
+          onToggleCompleted
+        }
+        onRemoveTask = {
+          onRemoveTask
+        }
+        />
+      ))
+    } <
+    /div> <
+    /div>
   );
 }
 
