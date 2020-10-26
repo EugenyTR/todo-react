@@ -23,13 +23,16 @@ function App() {
       text: 'Проверка автоматической сборки',
       completed: false,
     },
+    {
+      text: 'Загрузили проект на Vercel и Netlify',
+      completed: true,
+    },
   ]);
 
   const onToggleCompleted = (index) => {
     setTasks((prevTasks) =>
       prevTasks.map((task, curIdx) =>
-        index === curIdx ?
-        {
+        index === curIdx ? {
           ...task,
           completed: !task.completed,
         } :
@@ -57,8 +60,8 @@ function App() {
     <
     div className = "todo__header" >
     <
-    h4 > Список задач < /h4> <
-    /div> <
+    h4 > Список задач < /h4> < /
+    div > <
     TaskField onAddTask = {
       onAddTask
     }
@@ -86,8 +89,8 @@ function App() {
         />
       ))
     } <
-    /div> <
-    /div>
+    /div> < /
+    div >
   );
 }
 
